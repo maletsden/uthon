@@ -1,0 +1,16 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-image: linear-gradient(to bottom right, #192a56, #487eb0);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  min-height: 100vh;
+  flex-direction: column;
+}
