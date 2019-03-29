@@ -1,72 +1,93 @@
-html, body
-{
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	height: 100%;
-	/*background-color: #192a56;*/
-	border: 0;
-	/*animation: color_in infinite 8s;*/
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
-html
-{
-    background-image: linear-gradient(to bottom right, #192a56, #487eb0);
+html {
+  background-image: linear-gradient(to bottom right, #192a56, #487eb0);
 }
-
 .container {
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	height: 100vh;
-	flex-direction: column;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.container__head, .container__head2 {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 120%;
+  margin-left: -10%;
+  color: white;
 }
 
 .container__head {
-	text-align: center;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 40px;
-	color: white;
-
+  font-size: 6vw;
 }
-/*.big*/
-/*{*/
-	/*text-align: center;*/
-	/*font-size: 89px !important;*/
-	/*font-family: Arial, Helvetica, sans-serif;*/
-	/*margin-top: 280px;*/
-	/*margin-bottom: 30px;*/
-	/*color: white;*/
-	/*text-transform: uppercase;*/
-/*}*/
+.container__head2 {
+  font-size: 3.5vw;
+}
 
-/*#button*/
-/*{*/
-	/*width: 125px;*/
-	/*height: 40px;*/
-	/*font-family: Arial, Helvetica, sans-serif;*/
-	/*font-size: 28px;*/
-	/*color: darkblue;*/
-	/*!*font-weight: bold;*!*/
-	/*background: white;*/
-	/*padding: 0;*/
-	/*border: 0;*/
-	/*margin: 15 0 0 0;*/
-	/*float: bottom;*/
-	/*position: absolute;*/
-/*}*/
-/*#password*/
-/*{*/
-	/*width: 125px;*/
-	/*height: 40px;*/
-	/*font-family: Arial, Helvetica, sans-serif;*/
-	/*font-size: 28px;*/
-	/*color: darkblue;*/
-	/*!*font-weight: bold;*!*/
-	/*background: white;*/
-	/*padding: 0;*/
-	/*border: 0;*/
-	/*margin: 15, 0, 0, 0 !important;*/
-	/*float: bottom;*/
-	/*position: absolute;*/
-/*}*/
+.container__form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container__input, .container__button {
+  width: 100%;
+  height: 30px;
+  margin: 10px auto;
+}
+/* --- Container Inputs */
+/* TODO: input inserting shows backgroud: white */
+.container__input {
+  background: rgba(0, 0, 0, 0);
+  color: white;
+  border: 0;
+  border-bottom: 2px solid white;
+  font-size: 25px;
+  padding: 5px 0;
+}
+
+.container__input::placeholder {
+  color: #C8D4DB;
+  text-align: center;
+}
+
+.container__input:focus{
+    outline: none;
+}
+
+/* --- Container Buttons */
+.container__button {
+  height: 50px;
+  border-radius: 10px;
+  font-size: 25px;
+  color: #000007;
+  padding: 10px;
+  background: #fff;
+  align-items: center;
+  justify-content: center;
+}
+
+.container__button-larger_margin {
+  margin-top: 20px;
+}
+@media (max-width: 600px) {
+  .container__head {
+    font-size: 10vw;
+  }
+  .container {
+    width: 70%;
+  }
+}
+@media (min-width: 600px) {
+  .container__head {
+    font-size: 6vw;
+  }
+  .container {
+    width: 40%;
+  }
+}
