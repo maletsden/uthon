@@ -13,4 +13,5 @@ html {
   margin: auto;
   min-height: 100vh;
   flex-direction: column;
+  background: url('../static/70.jpg')
 }
