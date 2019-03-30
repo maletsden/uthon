@@ -5,13 +5,61 @@ html, body {
 
 html {
   background-image: linear-gradient(to bottom right, #192a56, #487eb0);
+  min-height: 100%;
 }
 
-.container {
+.share_container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin: auto;
-  min-height: 100vh;
-  flex-direction: column;
-  background: url('../static/70.jpg')
+  flex-wrap: wrap;
+  /* height: 100vh; */
+  width: 70%;
+  align-items: center;
+  /* flex-direction: column; */
+
+}
+
+.share_container__head {
+  flex: 1 0 100%;
+  text-align: center;
+  font-size: 5vw;
+  color: white;
+}
+
+.share_container__icon {
+  text-align: center;
+}
+.share_container__icon-active {
+  background: red;
+}
+@media (max-width: 800px) {
+  .share_container__head {
+    font-size: 8vw;
+  }
+
+  .share_container__icon {
+    width: 43%;
+    margin: 3% 2%;
+    font-size: 30vw;
+  }
+}
+
+
+@media (min-width: 800px) {
+  .share_container__icon {
+    /* flex: 1 0 30%; */
+    width: 25%;
+    margin: 0 2%;
+    font-size: 15vw;
+  }
+
+}
+
+
+.share_container__button_qr {
+  margin: 50px auto;
+  font-size: 30px;
+  width: 30vw;
+  height: 10vw;
 }

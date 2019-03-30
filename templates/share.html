@@ -4,15 +4,50 @@
 <head>
   <meta charset="UTF-8">
   <title>MoveOn</title>
+  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="../static/share.css">
+
 </head>
 
 <body>
   <!-- <img src="" alt=""> -->
-  <div class="container">
+  <div class="share_container">
+    <h1 class="share_container__head">Click on which data to share</h1>
+    <form id='share_form' method="post">
+      <i class="share_container__icon fa fa-instagram" aria-hidden="true" name='instagram'></i>
+      <i class="share_container__icon fa fa-facebook-official" aria-hidden="true" name='facebook'></i>
+      <i class="share_container__icon fa fa-telegram" aria-hidden="true" name='telegram'></i>
+      <i class="share_container__icon fa fa-phone-square" aria-hidden="true" name='phone'></i>
+      <i class="share_container__icon fa fa-envelope" aria-hidden="true" name='email'></i>
+      <i class="share_container__icon fa fa-instagram" aria-hidden="true"></i>
 
+      <button id='share_file' class='share_container__button_qr' type="submit" name="button">GET QR</button>
+
+    </form>
   </div>
 
+
+  <script type="text/javascript">
+    const icons = document.getElementsByClassName('share_container__icon');
+
+    for (const icon of icons) {
+      console.log(icon);
+      icon.onclick = (e) => {
+        e.target.classList.toggle('share_container__icon-active');
+      }
+    }
+
+    const form = document.getElementById('share_form');
+
+    console.log(window.location);
+
+    form.onsubmit = () => {
+      // form.action = '/';
+      return false;
+    };
+
+    }
+  </script>
 
 </body>
 
