@@ -4,15 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <title>MoveOn</title>
-  <link rel="stylesheet" type="text/css" href="../static/style.css">
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
 </head>
 
 <body>
-  <div class="container">
+  <div class="container" action='/register' method="post">
     <h1 class="container__head2">Enter the data to register</h1>
-    <form class="container__form" action='/register'>
-      <input class="container__input" name="phone" placeholder="Username" type="text" />
-      <input class="container__input" name="email" placeholder="Password" type="text" />
+    <form class="container__form">
+      <input class="container__input" name="login" placeholder="Username" type="text" />
+      <input class="container__input" name="password" placeholder="Password" type="text" />
       <input class="container__input" name="phone" placeholder="Mobile phone" type="text" />
       <input class="container__input" name="email" placeholder="E-mail" type="text" />
       <input class="container__input" name="facebook" placeholder="Facebook" type="text" />
