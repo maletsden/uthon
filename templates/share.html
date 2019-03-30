@@ -35,6 +35,11 @@
       console.log(icon);
       icon.onclick = (e) => {
         e.target.classList.toggle('share_container__icon-active');
+        if (e.target.status) {
+          e.target.status = 0;
+        } else {
+          e.target.status = 1;
+        }
       }
     }
 
@@ -43,11 +48,12 @@
     console.log(window.location);
 
     form.onsubmit = () => {
-      let indexes = [];
+      let indexes = '';
       for (let icon of icons) {
-        indexes.push(icon.style.backgroud == 'red')
+        indexes += icon.status || 0;
       }
-      // form.action = '/';
+      form.action = '/' + 'some login' + '/' + indexes;
+      console.log(form.action);
       return false;
     };
 
