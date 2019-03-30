@@ -12,56 +12,72 @@
   <div class="container" action='/qr/' method="post">
     <h1 class="container__head2">Choose data to share</h1>
     <form id='share_form' method="post" class="container__form" action='/register'>
-
+      {% if accounts['phone'] %}
       <div class="container__row">
         <i class="fa fa-phone-square" aria-hidden="true"></i>
-        <div class="">
-
-        </div>
+        <a href="{{ accounts.phone }}" target='blank'><div class="">
+          {{ accounts.phone }}
+        </div></a>
       </div>
+      {% endif %}
 
+      {% if accounts.username %}
       <div class="container__row">
         <i class="fa fa-user-circle" aria-hidden="true"></i>
-        <div class="">
-
-        </div>
+        <a href="{{ accounts.username }}" target='blank'><div class="">
+          {{ accounts.username }}
+        </div></a>
       </div>
+      {% endif %}
 
-
+      {% if accounts.email %}
       <div class="container__row">
         <i class="fa fa-envelope" aria-hidden="true"></i>
-        <div class="">
-
-        </div>
+        <a href="{{ accounts.email }}" target='blank'><div class="">
+          {{ accounts.email }}
+        </div></a>
       </div>
+      {% endif %}
 
+
+      {% if accounts.facebook %}
       <div class="container__row">
         <i class="fa fa-facebook-official" aria-hidden="true"></i>
-        <div class="">
-
-        </div>
+        <a href="{{ accounts.facebook }}" target='blank'><div class="">
+          {{ accounts.facebook }}
+        </div></a>
       </div>
+      {% endif %}
 
 
+      {% if accounts.telegram %}
       <div class="container__row">
         <i class="fa fa-telegram" aria-hidden="true"></i>
-        <div class="">
-
-        </div>
+        <a href="{{ accounts.telegram }}" target='blank'><div class="">
+          {{ accounts.telegram }}
+        </div></a>
       </div>
+      {% endif %}
 
+      {% if accounts.twitter %}
       <div class="container__row">
         <i class="fa fa-twitter-square" aria-hidden="true"></i>
-        <div class="">
-
-        </div>
+        <a href="{{accounts.twitter}}" target='blank'><div class="">
+          {{accounts.twitter}}
+        </div></a>
       </div>
+      {% endif %}
+
+      {% if accounts.instagram %}
       <div class="container__row">
         <i class="fa fa-instagram" aria-hidden="true"></i>
-        <div class="">
-
-        </div>
+        <a href="{{accounts.instagram}}" target='blank'><div class="">
+          {{accounts.instagram}}
+        </div></a>
       </div>
+      {% endif %}
+
+
       <button id='share_file' class='container__button' type="submit" name="button">GET QR</button>
     </form>
   </div>

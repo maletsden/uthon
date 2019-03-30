@@ -12,7 +12,7 @@
     <h1 class="container__head">Friends Locator</h1>
     <form method="post" id='login_form' class="container__form">
       <input class="container__input" id="username" class="prompt" name="login" placeholder="Username" type="text" />
-      <input class="container__input" id="password" name="pasw" placeholder="Password" type="text" />
+      <input class="container__input" id="password" name="pasw" placeholder="Password" type="password" />
       <button class="container__button container__button-larger_margin" id="log_in" class="button" type="submit">Log In</button>
       <button class="container__button" id="sign_up" class="button">Sign Up</button>
       <button id='scan_qr' class='container__button' type="submit" name="button">Scan QR</button>
@@ -35,7 +35,7 @@
       form.submit();
     }
     const scan_qr = document.getElementById('scan_qr');
-    singup.onclick = function(button) {
+    scan_qr.onclick = function(button) {
       form.action = '/scan_qr';
       form.submit();
     }

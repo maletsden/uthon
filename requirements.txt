@@ -1,1 +1,4 @@
 qrcode
+opencv-python
+camera
+flask
