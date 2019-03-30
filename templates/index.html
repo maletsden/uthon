@@ -22,7 +22,7 @@
     const form = document.getElementById('login_form');
     const login = document.getElementById('log_in');
     login.onclick = function(button) {
-      form.action = '/login';
+      form.action = '/profile?login=user';
       form.submit();
     }
     const singup = document.getElementById('sing_up');
