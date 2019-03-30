@@ -4,62 +4,70 @@
 <head>
   <meta charset="UTF-8">
   <title>MoveOn</title>
-  <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="../static/share.css">
-
+  <link rel="stylesheet" type="text/css" href="../static/style.css">
 </head>
 
 <body>
-  <!-- <img src="" alt=""> -->
-  <form id='share_form' method="post">
+  <div class="container" action='/qr/' method="post">
+    <h1 class="container__head2">Choose data to share</h1>
+    <form id='share_form' method="post" class="container__form" action='/register'>
 
-    <div class="share_container">
-      <h1 class="share_container__head">Click on which data to share</h1>
-      <i class="share_container__icon fa fa-instagram" aria-hidden="true" name='instagram'></i>
-      <i class="share_container__icon fa fa-twitter-square" aria-hidden="true" name='twitter'></i>
-      <i class="share_container__icon fa fa-facebook-official" aria-hidden="true" name='facebook'></i>
-      <i class="share_container__icon fa fa-telegram" aria-hidden="true" name='telegram'></i>
-      <i class="share_container__icon fa fa-phone-square" aria-hidden="true" name='phone'></i>
-      <i class="share_container__icon fa fa-envelope" aria-hidden="true" name='email'></i>
+      <div class="container__row">
+        <input class='container__checkbox' type="checkbox" name="phone_checkbox" value="">
+        <input class="container__input" name="phone" placeholder="Mobile phone" type="text" />
+      </div>
 
-      <button id='share_file' class='share_container__button_qr' type="submit" name="button">GET QR</button>
+      <div class="container__row">
+        <input class='container__checkbox' type="checkbox" name="" value="">
+        <input class="container__input" name="login" placeholder="Username" type="text" />
+      </div>
 
-    </div>
-  </form>
+      <div class="container__row">
+        <input class='container__checkbox' type="checkbox" name="email_checkbox" value="">
+        <input class="container__input" name="email" placeholder="E-mail" type="text" />
+      </div>
+
+      <div class="container__row">
+        <input class='container__checkbox' type="checkbox" name="email_checkbox" value="">
+        <input class="container__input" name="facebook" placeholder="Facebook" type="text" />
+      </div>
+
+      <div class="container__row">
+        <input class='container__checkbox' type="checkbox" name="telegram_checkbox" value="">
+        <input class="container__input" name="telegram" placeholder="Telegram" type="text" />
+      </div>
+      <div class="container__row">
+        <input class='container__checkbox' type="checkbox" name="twitter_checkbox" value="">
+        <input class="container__input" name="twitter" placeholder="Twitter" type="text" />
+      </div>
+      <div class="container__row">
+        <input class='container__checkbox' type="checkbox" name="email_instagram" value="">
+        <input class="container__input" name="instagram" placeholder="Instagram" type="text" />
+      </div>
+      <button id='share_file' class='container__button' type="submit" name="button">GET QR</button>
+    </form>
+  </div>
 
 
   <script type="text/javascript">
-    const icons = document.getElementsByClassName('share_container__icon');
-
-    for (const icon of icons) {
-      console.log(icon);
-      icon.onclick = (e) => {
-        e.target.classList.toggle('share_container__icon-active');
-        if (e.target.status) {
-          e.target.status = 0;
-        } else {
-          e.target.status = 1;
-        }
-      }
-    }
-
+    const checkboxes = document.getElementsByClassName('container__checkbox');
     const form = document.getElementById('share_form');
 
-    console.log(window.location);
-
+    
     form.onsubmit = () => {
       let indexes = '';
-      for (let icon of icons) {
-        indexes += icon.status || 0;
+      for (let checkbox of checkboxes) {
+        indexes += checkbox.checked ? 1 : 0;
       }
-      form.action = '/' + 'some login' + '/' + indexes;
-      console.log(form.action);
+
+      // TODO: get login
+      form.action += '/qr/some login' + '/' + indexes;
+
       return false;
     };
 
     // }
   </script>
-
 </body>
 
 </html>
