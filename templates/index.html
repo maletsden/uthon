@@ -14,7 +14,7 @@
       <input class="container__input" id="login" class="prompt" name="login" placeholder="Username" type="text" />
       <input class="container__input" id="password" name="pasw" placeholder="Password" type="text" />
       <button class="container__button container__button-larger_margin" id="log_in" class="button" type="submit">Log In</button>
-      <button class="container__button" id="sing_up" class="button">Sing Up</button>
+      <button class="container__button" id="sign_up" class="button">Sign Up</button>
     </form>
   </div>
 
@@ -25,9 +25,9 @@
       form.action = '/login';
       form.submit();
     }
-    const singup = document.getElementById('sing_up');
+    const singup = document.getElementById('sign_up');
     singup.onclick = function(button) {
-      form.action = '/sing_up';
+      form.action = '/sign_up';
       form.submit();
     }
   </script>

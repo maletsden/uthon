@@ -30,8 +30,11 @@ def register():
     the register page
     """
     username = request.form.get("login")
+    print(username is None)
     password = request.form.get("pasw")
+
     if not username or not password:
+        print(1)
         return render_template('register_fail.html')
     with sqlite3.connect('Hizer.db') as data_base:
         cursor = data_base.cursor()
@@ -42,6 +45,7 @@ def register():
         result = cursor.fetchall()
 
     if result != []:
+        print(2)
         return render_template('register_fail.html')
 
     phone = request.form.get("phone")
@@ -104,9 +108,23 @@ def friend_post_request():
 # def profile():
 #     return render_template("profile.html")
 
+@app.route('/check_username', methods=["POST"])
+def check_username():
+    username = request.args.get("username")
+    with sqlite3.connect('Hizer.db') as data_base:
+        cursor = data_base.cursor()
 
-@app.route('/profile/<command>/<arg>')
-def profile_sq(command, arg):
+        check_user = "SELECT username FROM hizer WHERE username = ?"
+
+
+        cursor.execute(check_user, [(username)])
+        result = cursor.fetchall()
+
+    return '1' if result == [] else '0'
+
+@app.route('/profile/<username>/<indexes>')
+def profile_sq(username, indexes):
+    # TODO: SELECT from db
     # Remove any args that are None
     return render_template("fail.html")
 

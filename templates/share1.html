@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>MoveOn</title>
+  <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+
+<body>
+  <div class="container" action='/qr/' method="post">
+    <h1 class="container__head2">Choose data to share</h1>
+    <form id='share_form' method="post" class="container__form" action='/register'>
+
+      <div class="container__row">
+        <input class='container__checkbox' type="checkbox" name="phone_checkbox" value="">
+        <input class="container__input" name="phone" placeholder="Mobile phone" type="text" />
+      </div>
+
+      <div class="container__row">
+        <input class='container__checkbox' type="checkbox" name="" value="">
+        <input class="container__input" name="login" placeholder="Username" type="text" />
+      </div>
+
+      <div class="container__row">
+        <input class='container__checkbox' type="checkbox" name="email_checkbox" value="">
+        <input class="container__input" name="email" placeholder="E-mail" type="text" />
+      </div>
+
+      <div class="container__row">
+        <input class='container__checkbox' type="checkbox" name="email_checkbox" value="">
+        <input class="container__input" name="facebook" placeholder="Facebook" type="text" />
+      </div>
+
+      <div class="container__row">
+        <input class='container__checkbox' type="checkbox" name="telegram_checkbox" value="">
+        <input class="container__input" name="telegram" placeholder="Telegram" type="text" />
+      </div>
+      <div class="container__row">
+        <input class='container__checkbox' type="checkbox" name="twitter_checkbox" value="">
+        <input class="container__input" name="twitter" placeholder="Twitter" type="text" />
+      </div>
+      <div class="container__row">
+        <input class='container__checkbox' type="checkbox" name="email_instagram" value="">
+        <input class="container__input" name="instagram" placeholder="Instagram" type="text" />
+      </div>
+      <button id='share_file' class='container__button' type="submit" name="button">GET QR</button>
+    </form>
+  </div>
+
+
+  <script type="text/javascript">
+    const checkboxes = document.getElementsByClassName('container__checkbox');
+    const form = document.getElementById('share_form');
+
+    form.onsubmit = () => {
+      let indexes = '';
+      for (let checkbox of checkboxes) {
+        indexes += checkbox.checked ? 1 : 0;
+      }
+
+      // TODO: get login
+      form.action += '/qr/some login' + '/' + indexes;
+
+      return false;
+    };
+
+    // }
+  </script>
+</body>
+
+</html>
