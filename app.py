@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request  # , redirect
 import sqlite3
-import qr
+
+from qr import render_qr
 
 
 app = Flask(__name__, static_url_path='/static')
@@ -102,7 +103,6 @@ def check_username():
 
         check_user = "SELECT username FROM hizer WHERE username = ?"
 
-
         cursor.execute(check_user, [(username)])
         result = cursor.fetchall()
 
@@ -111,14 +111,14 @@ def check_username():
 @app.route('/profile', methods=["POST"])
 def profile():
     login = request.args.get('login', type=str)
-    return render_template("profile.html")
+    return render_template("share.html")
 
 @app.route('/qr', methods=["GET", "POST"])
-def profile_sq():
+def qr():
     login = request.args.get('login', type=str)
     arg = request.args.get('arg', type=str)
     # refresh or add QR image to qr_coders directory
-    qr.render_qr(login, arg)
+    render_qr(login, arg)
     # Remove any args that are None
     return render_template("qr.html",
                            sorce="/static/qr_codes/qr_{}_{}.jpg"

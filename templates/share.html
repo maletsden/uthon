@@ -28,7 +28,7 @@
       </div>
 
       <div class="container__row">
-        <input class='container__checkbox' type="checkbox" name="email_checkbox" value="">
+        <input class='container__checkbox' type="checkbox" name="facebook_checkbox" value="">
         <input class="container__input" name="facebook" placeholder="Facebook" type="text" />
       </div>
 
@@ -59,12 +59,9 @@
         indexes += checkbox.checked ? 1 : 0;
       }
 
-      form.action += '/qr' + window.location.search + '&arg=' + indexes;
-
+      form.action = '/qr' + window.location.search + '&arg=' + indexes;
       return true;
     };
-
-    // }
   </script>
 </body>
 
