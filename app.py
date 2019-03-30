@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request  # , redirect
 import sqlite3
 from qr import render_qr
-import cv2
-# from camera import VideoCamera, Response
 
 app = Flask(__name__, static_url_path='/static')
 app.config['TEMPLATES_AUTO_RELOAD'] = True
@@ -71,29 +69,6 @@ def sign_up():
     """
     return render_template("register.html")
 
-
-# @app.route("/login", methods=["POST"])
-# def profile():
-#     """
-#     What the authorized user see and can manage
-#     """
-#     if not request.form.get("pasw") or not request.form.get("login"):
-#         return render_template("fail.html")
-#     login = request.form.get("login")
-#     pasw = request.form.get("pasw")
-#     # SQL...
-#     return render_template(profile_html_former(login))
-
-
-# @app.route("/info", methods=["POST"])
-# def friend_post_request():
-#     """
-#     what the friend, who want get the credentials of the specific user through
-#     the QR code, will see
-#     """
-#     return render_template("info.html")
-
-
 @app.route('/check_username', methods=["POST"])
 def check_username():
     username = request.args.get("username")
@@ -133,28 +108,9 @@ def qr():
 #                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 #
 #
-# @app.route('/scan_qr')
-# def video_feed():
-#     return Response(gen(VideoCamera()),
-#                     mimetype='multipart/x-mixed-replace; boundary=frame')
-
-
-# @app.route('/info', methods=["POST", "GET"])
-# def info():
-#     username = request.args.get("login")
-#     with sqlite3.connect('Hizer.db') as data_base:
-#         cursor = data_base.cursor()
-#
-#         check_user = "SELECT * FROM hizer WHERE username = ?"
-#
-#         cursor.execute(check_user, [(username)])
-#         result = cursor.fetchall()
-#     print(result)
-#
-#     # return '1' if result == [] else '0'
-#     # return render_template("show_contacts.html", )
-#     return '1'
-
+@app.route('/scan_qr', methods=["POST", "GET"])
+def scan_qr():
+    return render_template("qr_scanner.html")
 
 @app.route('/info', methods=["POST", "GET"])
 def info():
@@ -180,7 +136,6 @@ def info():
 
 
     return render_template("show_contacts.html", accounts=accounts)
-    # accounts=accounts)
 
 
 if __name__ == '__main__':

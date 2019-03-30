@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>MoveOn</title>
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
+  <script type="text/javascript" src="/static/instascan.min.js"></script>
+
+</head>
+
+<body>
+  <div class="container_larger" action='/qr/' method="post">
+    <h1 class="container__head">Hizer me! 👋</h1>
+    <video id="preview"></video>
+  </div>
+
+  <script type="text/javascript">
+    let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+    scanner.addListener('scan', function (content) {
+      let l_index = content.indexOf('/', 1)
+      let r_index = content.indexOf('/', l_index + 1);
+      let username = content.slice(l_index + 1, r_index);
+      let indexes = content.slice(r_index + 1)
+      // let n_content =
+      window.location = content.slice(0, l_index) + '?login=' + username  + '&arg=' + indexes;
+      // TODO: check if QR not from it
+
+    });
+
+    Instascan.Camera.getCameras().then(function (cameras) {
+      if (cameras.length > 0) {
+        scanner.start(cameras[0]);
+      } else {
+        console.error('No cameras found.');
+      }
+    }).catch(function (e) {
+      console.error(e);
+    });
+  </script>
+</body>
+
+</html>
