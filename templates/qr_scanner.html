@@ -18,12 +18,7 @@
   <script type="text/javascript">
     let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
     scanner.addListener('scan', function (content) {
-      let l_index = content.indexOf('/', 1)
-      let r_index = content.indexOf('/', l_index + 1);
-      let username = content.slice(l_index + 1, r_index);
-      let indexes = content.slice(r_index + 1)
-      // let n_content =
-      window.location = content.slice(0, l_index) + '?login=' + username  + '&arg=' + indexes;
+      window.location = content;
       // TODO: check if QR not from it
 
     });

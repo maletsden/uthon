@@ -127,3 +127,18 @@ html {
   }
 
 }
+
+
+.container__icon {
+  font-size: 4.5vw;
+}
+
+.container__a {
+  text-decoration: none;
+}
+.container__url {
+  color: white;
+  width: 30vw;
+  margin: 20px 0 20px 20px;
+  border-bottom: 1px solid white;
+}
