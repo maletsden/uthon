@@ -18,5 +18,6 @@ def render_qr(url):
     img.save("qr.jpg")
 
 
+
 if __name__ == "__main__":
-    render_qr("")
+    render_qr("http://www.city-institute.org/index.php/uk/proekty/243-ngo-networking-stvorennia-merezhi-nuo-shcho-pratsiuiut-u-sferi-detsentralizatsii-u-zakhidnii-ukraini")

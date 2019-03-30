@@ -10,9 +10,9 @@
 <body>
   <div class="container" action='/register' method="post">
     <h1 class="container__head2">Enter the data to register</h1>
-    <form class="container__form">
+    <form method="post" class="container__form" action='/register'>
       <input class="container__input" name="login" placeholder="Username" type="text" />
-      <input class="container__input" name="password" placeholder="Password" type="text" />
+      <input class="container__input" name="pasw" placeholder="Password" type="text" />
       <input class="container__input" name="phone" placeholder="Mobile phone" type="text" />
       <input class="container__input" name="email" placeholder="E-mail" type="text" />
       <input class="container__input" name="facebook" placeholder="Facebook" type="text" />
