@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>MoveOn</title>
+  <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+
+<body>
+  <div class="container" action='/qr/' method="post">
+    <h1 class="container__head2">Choose data to share</h1>
+    <form id='share_form' method="post" class="container__form" action='/register'>
+
+      <div class="container__row">
+        <input class="container__input" name="phone" placeholder="Mobile phone" type="text"  value="{{ accounts.phone }}" />
+        <input class='container__checkbox' type="checkbox" name="phone_checkbox">
+      </div>
+
+      <div class="container__row">
+        <input class="container__input" name="login" placeholder="Username" type="text"  value="{{ accounts.username }}" />
+        <input class='container__checkbox' type="checkbox" name="">
+      </div>
+
+      <div class="container__row">
+        <input class="container__input" name="email" placeholder="E-mail" type="text"  value="{{ accounts.email }}" />
+        <input class='container__checkbox' type="checkbox" name="email_checkbox">
+      </div>
+
+      <div class="container__row">
+        <input class="container__input" name="facebook" placeholder="Facebook" type="text"  value="{{ accounts.facebook }}" />
+        <input class='container__checkbox' type="checkbox" name="facebook_checkbox">
+      </div>
+
+      <div class="container__row">
+        <input class="container__input" name="telegram" placeholder="Telegram" type="text"  value="{{ accounts.telegram }}" />
+        <input class='container__checkbox' type="checkbox" name="telegram_checkbox">
+      </div>
+      <div class="container__row">
+        <input class="container__input" name="twitter" placeholder="Twitter" type="text"  value={{ accounts.twitter }} />
+        <input class='container__checkbox' type="checkbox" name="twitter_checkbox">
+      </div>
+      <div class="container__row">
+        <input class="container__input" name="instagram" placeholder="Instagram" type="text"  value="{{ accounts.instagram }}" />
+        <input class='container__checkbox' type="checkbox" name="email_instagram">
+      </div>
+      <button id='share_file' class='container__button' type="submit" name="button">GET QR</button>
+    </form>
+  </div>
+
+
+  <script type="text/javascript">
+    const checkboxes = document.getElementsByClassName('container__checkbox');
+    const form = document.getElementById('share_form');
+
+    form.onsubmit = () => {
+      let indexes = '';
+      for (let checkbox of checkboxes) {
+        indexes += checkbox.checked ? 1 : 0;
+      }
+
+      form.action = '/qr' + window.location.search + '&arg=' + indexes;
+      return true;
+    };
+  </script>
+</body>
+
+</html>

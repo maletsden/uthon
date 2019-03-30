@@ -86,8 +86,27 @@ def check_username():
 @app.route('/profile', methods=["POST"])
 def profile():
     login = request.args.get('login', type=str)
-    return render_template("share.html")
+    arg = '1111111'
+    # get info about account
+    with sqlite3.connect('Hizer.db') as data_base:
+        cursor = data_base.cursor()
 
+        check_user = "SELECT * FROM hizer WHERE username = ?"
+
+        cursor.execute(check_user, [(login)])
+        data_base_response = cursor.fetchall()[0]
+
+        db_indexes = [6, 0, 5, 2, 4, 7, 3]
+        lables = ["phone", "username", "email", "facebook", "telegram", "twitter", "instagram"]
+
+        accounts = dict()
+        for i in range(7):
+            accounts[lables[i]] = data_base_response[db_indexes[i]] if arg[i] == "1" else False
+
+    print(accounts)
+
+
+    return render_template("share1.html", accounts=accounts)
 
 @app.route('/qr', methods=["GET", "POST"])
 def qr():
@@ -100,14 +119,6 @@ def qr():
                            sorce="/static/qr_codes/qr_{}_{}.jpg"
                            .format(login, arg))
 
-
-# def gen(camera):
-#     while True:
-#         frame = camera.get_frame()
-#         yield (b'--frame\r\n'
-#                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
-#
-#
 @app.route('/scan_qr', methods=["POST", "GET"])
 def scan_qr():
     return render_template("qr_scanner.html")
