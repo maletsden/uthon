@@ -1,7 +1,7 @@
 import qrcode
 
 
-def render_qr(url):
+def render_qr(url, login):
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_H,
@@ -15,7 +15,7 @@ def render_qr(url):
     # img.save("image.png")
     # img.save("image.bmp")
     # img.save("image.jpeg")
-    img.save("qr.jpg")
+    img.save("qr_{}.jpg".format(login))
 
 
 if __name__ == "__main__":
