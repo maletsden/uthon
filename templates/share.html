@@ -53,17 +53,15 @@
     const checkboxes = document.getElementsByClassName('container__checkbox');
     const form = document.getElementById('share_form');
 
-    
     form.onsubmit = () => {
       let indexes = '';
       for (let checkbox of checkboxes) {
         indexes += checkbox.checked ? 1 : 0;
       }
 
-      // TODO: get login
-      form.action += '/qr/some login' + '/' + indexes;
+      form.action += '/qr' + window.location.search + '&arg=' + indexes;
 
-      return false;
+      return true;
     };
 
     // }
